@@ -1,0 +1,28 @@
+
+services:
+  - type: web
+    name: omniroute
+    runtime: image
+    plan: free
+    image:
+      url: docker.io/diegosouzapw/omniroute:latest
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: DATA_DIR
+        value: /app/data
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: API_KEY_SECRET
+        generateValue: true
+      - key: INITIAL_PASSWORD
+        generateValue: true
+      - key: AUTH_COOKIE_SECURE
+        value: "true"
+      - key: REQUIRE_API_KEY
+        value: "true"
+      - key: APP_LOG_TO_FILE
+        value: "false"
+    autoDeploy: true
